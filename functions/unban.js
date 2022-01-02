@@ -7,15 +7,16 @@ async function sendUnbanEmail(usersInfo, url) {
     sendGridMail.setApiKey(process.env.SENDGRID_API_KEY);
     const html = `
       <div> 
-         Hi ${usersInfo.username}#${usersInfo.user_discriminator}! <br>
-         Your ban appeal request submitted on ${url} has been approved!<br>
-         You are now able to rejoin us using this invite ${process.env.INVITE_URL}
+         Hi ${usersInfo.username}#${usersInfo.user_discriminator}, <br>
+         
+         Your ban appeal request submitted to the My Hero Academia Discord has been approved.<br>
+         You are now able to rejoin the community using this invite ${process.env.INVITE_URL}
       </div>
     `;
     const mail = {
         from: process.env.SENDGRID_SENDER_EMAIL,
         to: usersInfo.email,
-        subject: "Your Ban Appeal Was Approved!",
+        subject: "Regarding your Ban Appeal on the My Hero Academia Discord",
         html,
     };
     await sendGridMail.send(mail);
